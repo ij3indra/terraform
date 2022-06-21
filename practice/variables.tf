@@ -34,7 +34,7 @@ variable "student" {
     name     = string
     rollNo   = string
     grade    = number
-    present  = boolean
+    present  = bool
     subjects = list(string)
   })
 
@@ -49,6 +49,6 @@ variable "student" {
 
 // tuples
 variable "kitty" {
-  type    = tuple([string, number, boolean])
+  type    = tuple([string, number, bool])
   default = ["cat", 1, false]
 }

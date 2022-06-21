@@ -4,11 +4,13 @@ resource "local_file" "pets" {
 }
 
 resource "random_pet" "my-pet" {
-  prefix = var.prefix[0]
+  prefix    = var.prefix[0]
+  separator = "."
+  length    = 2
 }
 
 resource "local_file" "map-file-content" {
   filename = "map-file.txt"
   content  = var.file-content["statement1"]
-
 }
+ 
