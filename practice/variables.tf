@@ -13,6 +13,11 @@ variable "prefix" {
   type    = list(string)
 }
 
+variable "cloud-providers" {
+  default = ["AWS", "Google", "Azure", "IBM"]
+  type    = list(string)
+}
+
 // map
 variable "file-content" {
   type = map(string)
