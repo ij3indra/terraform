@@ -14,11 +14,28 @@ provider "aws" {
   region  = "ap-south-1"
 }
 
-resource "aws_instance" "app_server" {
-  ami           = "ami-830c94e3"
-  instance_type = "t2.micro"
-
+// IAM user
+resource "aws_iam_user" "tf_iam_demo" {
+  name = "tfuser"
   tags = {
-    Name = "ExampleAppServerInstance"
+    "Description" = "This is user created using terraform"
   }
+
+}
+
+// IAM policy
+resource "aws_iam_policy" "tf-user-policy" {
+  name   = "tfUser"
+  policy = file("tf_user_policy.json")
+  // policy = <<EOF
+  // policy json 
+  // EOF
+
+}
+
+// IAM policy attachment to user
+resource "aws_iam_user_policy_attachment" "tfuser-policy-attachment" {
+  user       = aws_iam_user.tf_iam_demo.name
+  policy_arn = aws_iam_policy.tf-user-policy.arn
+
 }
