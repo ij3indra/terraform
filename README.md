@@ -28,3 +28,17 @@
 ###### apply by creating file name with extension tfvars and file content can be
 
 `varname="value"`
+
+###### Terraform state command
+
+`terraform state list`
+
+`terraform state show`
+
+`terraform state show aws_s3_bucket.tf-demo-bucket`
+
+`terraform state mv` to rename the resource
+
+`terraform state pull` in case if state file is maintained remotely
+
+`terraform state rm` in case if state file is maintained remotely
